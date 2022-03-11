@@ -47,6 +47,7 @@ resets the card back to its original state.
   
 ## Notable Features
 - To the pixel reproduction of provided design.
+- Cart persisted with cookies.
 
 ## Instructions
 1) Install PostgreSQL 14.

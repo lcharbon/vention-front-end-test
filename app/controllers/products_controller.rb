@@ -2,7 +2,19 @@ class ProductsController < ApplicationController
   before_action :set_product, only: %i[ show edit update destroy ]
 
   # GET /products or /products.json
+
+    
   def index
+    if cookies[:cart_id]
+      @cart = Cart.find_by_id cookies[:cart_id]  
+    end
+
+    if @cart.nil?
+      @cart = Cart.create
+      cookies[:cart_id] = @cart.id
+    end
+
+    @cart_products = @cart.products.to_a
     @products = Product.all
   end
 

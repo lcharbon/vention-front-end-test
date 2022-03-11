@@ -13,7 +13,9 @@
   <div class="cart-button">
       Remove From Cart
   </div>
-  <div class="cart-status">
-    In Cart
-  </div>
+  <% if @cart_products.include? product %>
+    <div class="cart-status">
+      In Cart
+    </div>
+  <% end %>
 </div>
