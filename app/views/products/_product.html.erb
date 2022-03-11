@@ -1,22 +1,19 @@
-<div id="<%= dom_id product %>">
-  <p>
-    <strong>Name:</strong>
-    <%= product.name %>
-  </p>
+<div class="card" id="<%= dom_id product %>">
 
-  <p>
-    <strong>Price:</strong>
-    <%= product.price %>
-  </p>
-
-  <p>
-    <strong>Rating:</strong>
-    <%= product.rating %>
-  </p>
-
-  <p>
-    <strong>Featured photo:</strong>
-    <%= product.featured_photo %>
-  </p>
-
+  <%= image_tag(product.featured_photo)%>
+  <div class="details">
+    <p class="name"> <%= product.name %> </p>
+    <p class="price"> <%= number_to_currency product.price.to_f/100 %> </p>
+  </div>
+  <div class="rating">
+  <% 5.times do |i| %>
+    <%= inline_svg_tag "star.svg", class: (i < product.rating  ? "rating-star illuminated" : "rating-star") %>
+  <% end %>
+  </div>
+  <div class="cart-button">
+      Remove From Cart
+  </div>
+  <div class="cart-status">
+    In Cart
+  </div>
 </div>

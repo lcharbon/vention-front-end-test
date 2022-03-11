@@ -45,6 +45,8 @@ resets the card back to its original state.
 ![alt text](/states/state-3.png  "Logo Title Text 1")
 
   
+## Notable Features
+- To the pixel reproduction of provided design.
 
 ## Instructions
 1) Install PostgreSQL 14.
