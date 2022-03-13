@@ -13,7 +13,7 @@ class ProductsController < ApplicationController
     end
 
     @cart_products = @cart.products.to_a
-    @products = Product.all
+    @products = Product.order created_at: :desc
   end
 
   # POST /products
@@ -22,14 +22,25 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.save
-        turbo_stream.prepend(
-            "products",
-            partial: "products/product",
-            locals: { 
-              product: @product,
-              in_cart: false
-            }
-        )
+        format.turbo_stream do 
+          render turbo_stream: [
+            turbo_stream.update(
+              "new-product",
+              partial: "products/form",
+              locals: { 
+                product: Product.new,
+              }
+            ),
+            turbo_stream.prepend(
+              "products",
+              partial: "products/product",
+              locals: { 
+                product: @product,
+                in_cart: false
+              }
+            )
+          ]
+        end
       else
         format.html { render :index, status: :unprocessable_entity }
       end

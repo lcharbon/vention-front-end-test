@@ -1,37 +1,25 @@
-<%= form_with(model: product) do |form| %>
-  <% if product.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+<div id="new-product" class="card">
+  <%= form_with model: product, multipart: true do |form| %>
+    <% if product.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
 
-      <ul>
-        <% product.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+        <ul>
+          <% product.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="fields">
+        <%= form.hidden_field :featured_photo, value: "/assets/blue-flower" %>    
+        <%= form.text_field :name, placeholder: "Name"%>
+        <%= form.number_field :price, placeholder: "Price", min: 0 %>
+        <%= form.number_field :rating, placeholder: "Rating", min: 1, max: 5 %>
+    </div>
+
+    <div>
+      <%= form.submit class: "button" %>
     </div>
   <% end %>
-
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div>
-    <%= form.label :price, style: "display: block" %>
-    <%= form.number_field :price %>
-  </div>
-
-  <div>
-    <%= form.label :rating, style: "display: block" %>
-    <%= form.number_field :rating %>
-  </div>
-
-  <div>
-    <%= form.label :featured_photo, style: "display: block" %>
-    <%= form.text_field :featured_photo %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

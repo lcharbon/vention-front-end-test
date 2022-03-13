@@ -1,16 +1,12 @@
-<p style="color: green"><%= notice %></p>
 
-<h1>Products</h1>
-
-<%= render "form", product: Product.new %>
 
 <div id="products">
   <% @products.each do |product| %>
-    <div class="card" id="<%= dom_id product %>">
-      <%= render :partial => "products/product", :locals => { 
-        product: product,
-        in_cart: @cart_products.include?(product) 
-      } %>
-    </div>
+    <%= render :partial => "products/product", :locals => { 
+      product: product,
+      in_cart: @cart_products.include?(product) 
+    } %>
   <% end %>
+  <%= render "form", product: Product.new %>
 </div>
+

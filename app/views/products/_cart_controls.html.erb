@@ -3,8 +3,8 @@
         In Cart
     </div>
     <% if in_cart %>
-        <%= button_to "Remove From Cart", remove_from_cart_path(product.id), method: :delete, class: "cart-button" %>
+        <%= button_to "Remove From Cart", remove_from_cart_path(product.id), method: :delete, class: "button cart-button" %>
     <% else %>
-        <%= button_to "Add To Cart", add_to_cart_path(product.id), method: :post, class: "cart-button" %>
+        <%= button_to "Add To Cart", add_to_cart_path(product.id), method: :post, class: "button cart-button" %>
     <% end %>
 </div>
