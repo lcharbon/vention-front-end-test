@@ -23,6 +23,12 @@
     box-sizing: border-box;
     color: #fff;
     font-size: 12px;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.card .cart-status.in-cart {
+    opacity: 1;
 }
 
 .card img {

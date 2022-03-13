@@ -1,10 +1,10 @@
 <div class="cart-controls" id="<%= dom_id(product) + "_controls" %>">
+    <div class="<%= ["cart-status", *("in-cart" unless !in_cart)].join(" ") %>">
+        In Cart
+    </div>
     <% if in_cart %>
-        <div class="cart-status">
-            In Cart
-        </div>
         <%= button_to "Remove From Cart", remove_from_cart_path(product.id), method: :delete, class: "cart-button" %>
     <% else %>
-    <%= button_to "Add To Cart", add_to_cart_path(product.id), method: :post, class: "cart-button" %>
+        <%= button_to "Add To Cart", add_to_cart_path(product.id), method: :post, class: "cart-button" %>
     <% end %>
 </div>

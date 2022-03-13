@@ -44,7 +44,7 @@ class ProductsController < ApplicationController
       if cart.add_product @product
         respond_to do |format|
           format.turbo_stream do
-            render turbo_stream: turbo_stream.replace(
+            render turbo_stream: turbo_stream.update(
               "product_#{@product.id}_controls",
               partial: "products/cart_controls",
               locals: { 
@@ -68,7 +68,7 @@ class ProductsController < ApplicationController
       if cart.remove_product @product
         respond_to do |format|
           format.turbo_stream do
-            render turbo_stream: turbo_stream.replace(
+            render turbo_stream: turbo_stream.update(
               "product_#{@product.id}_controls",
               partial: "products/cart_controls",
               locals: { 

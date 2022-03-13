@@ -48,6 +48,11 @@ resets the card back to its original state.
 ## Notable Features
 - To the pixel reproduction of provided design.
 - Cart persisted with cookies.
+- Products resources routes limited to create and index.
+
+## Things to Improve
+- Review routes for add to cart.
+- Add CSS transitions to cart status badge.
 
 ## Instructions
 1) Install PostgreSQL 14.
