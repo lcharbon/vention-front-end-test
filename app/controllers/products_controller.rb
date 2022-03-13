@@ -1,9 +1,7 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: %i[ show edit update destroy ]
+  before_action :set_product, only: %i[ add_to_cart remove_from_cart ]
 
-  # GET /products or /products.json
-
-    
+  # GET /products
   def index
     if cookies[:cart_id]
       @cart = Cart.find_by_id cookies[:cart_id]  
@@ -18,54 +16,71 @@ class ProductsController < ApplicationController
     @products = Product.all
   end
 
-  # GET /products/1 or /products/1.json
-  def show
-  end
-
-  # GET /products/new
-  def new
-    @product = Product.new
-  end
-
-  # GET /products/1/edit
-  def edit
-  end
-
-  # POST /products or /products.json
+  # POST /products
   def create
-    @product = Product.new(product_params)
+    @product = Product.new product_params
 
     respond_to do |format|
       if @product.save
-        format.html { redirect_to product_url(@product), notice: "Product was successfully created." }
-        format.json { render :show, status: :created, location: @product }
+        turbo_stream.prepend(
+            "products",
+            partial: "products/product",
+            locals: { 
+              product: @product,
+              in_cart: false
+            }
+        )
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
+        format.html { render :index, status: :unprocessable_entity }
       end
     end
   end
 
-  # PATCH/PUT /products/1 or /products/1.json
-  def update
-    respond_to do |format|
-      if @product.update(product_params)
-        format.html { redirect_to product_url(@product), notice: "Product was successfully updated." }
-        format.json { render :show, status: :ok, location: @product }
+  # POST /products/:id/add_to_cart
+  def add_to_cart
+    cart = Cart.find_by_id cookies[:cart_id]
+
+    if cart.present? && @product.present?
+      if cart.add_product @product
+        respond_to do |format|
+          format.turbo_stream do
+            render turbo_stream: turbo_stream.replace(
+              "product_#{@product.id}_controls",
+              partial: "products/cart_controls",
+              locals: { 
+                product: @product,
+                in_cart: true
+              }
+            )
+          end
+        end
       else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
+        format.html { render :index, status: :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /products/1 or /products/1.json
-  def destroy
-    @product.destroy
+  # POST products/:id/remove_from_cart
+  def remove_from_cart
+    cart = Cart.find_by_id cookies[:cart_id]
 
-    respond_to do |format|
-      format.html { redirect_to products_url, notice: "Product was successfully destroyed." }
-      format.json { head :no_content }
+    if cart.present? && @product.present?
+      if cart.remove_product @product
+        respond_to do |format|
+          format.turbo_stream do
+            render turbo_stream: turbo_stream.replace(
+              "product_#{@product.id}_controls",
+              partial: "products/cart_controls",
+              locals: { 
+                product: @product,
+                in_cart: false
+              }
+            )
+          end
+        end
+      else
+        format.html { render :index, status: :unprocessable_entity }
+      end
     end
   end
 

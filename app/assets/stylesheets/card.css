@@ -1,5 +1,6 @@
 .card {
     position: relative;
+    display: inline-block;
     width: 370px;
     height: 454px;
     padding-top: 20px;
@@ -78,8 +79,10 @@
     border-radius: 5px;
     color: #fff;
     background-color: rgb(108, 231, 150);
+    border: none;
     font-size: 15px;
     cursor: pointer;
+    outline: inherit;
 }
 
 .card:hover .cart-button {
