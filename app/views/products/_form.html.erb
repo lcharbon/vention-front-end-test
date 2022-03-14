@@ -11,6 +11,12 @@
         </ul>
       </div>
     <% end %>
+    <div class="dropzone" data-controller="dropzone" data-dropzone-max-files="1">
+      <%= form.file_field :feature_image, direct_upload: true, data: { target: "dropzone.input "} %>
+      <div class="dropzone-msg dz-message">
+        Drag to add an image of the flower.
+      </div>
+    </div>
     <div class="fields">
         <%= form.hidden_field :featured_photo, value: "/assets/blue-flower" %>    
         <%= form.text_field :name, placeholder: "Name"%>
@@ -18,7 +24,7 @@
         <%= form.number_field :rating, placeholder: "Rating", min: 1, max: 5 %>
     </div>
 
-    <div>
+    <div class="action-container">
       <%= form.submit class: "button" %>
     </div>
   <% end %>

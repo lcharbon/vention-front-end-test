@@ -4,7 +4,6 @@ class CreateProducts < ActiveRecord::Migration[7.0]
       t.string :name
       t.integer :price
       t.integer :rating
-      t.string :featured_photo
 
       t.timestamps
     end

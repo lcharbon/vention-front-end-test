@@ -46,7 +46,7 @@ resets the card back to its original state.
 
   
 ## Notable Features
-- To the pixel reproduction of provided design.
+- Near to the pixel reproduction of provided design.
 - Cart persisted with cookies.
 - Products resources routes limited to create and index.
 
@@ -59,7 +59,7 @@ resets the card back to its original state.
 2) Start PostgreSQL: 
 	**macOS**
 	In the terminal execute:
-	postgres`-D /path/to/postgres start`
+	`postgres -D /path/to/postgres start`
 
 	**Linux**
 	In the terminal execute:

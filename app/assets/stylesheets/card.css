@@ -11,6 +11,10 @@
     vertical-align: top;
 }
 
+.card:last-child {
+    height: auto;
+}
+
 .card .cart-status {
     position: absolute;
     top: -15px;
@@ -25,7 +29,6 @@
     color: #fff;
     font-size: 12px;
     opacity: 0;
-    transition: opacity 0.5s ease-in-out;
 }
 
 .card .cart-status.in-cart {
@@ -39,10 +42,14 @@
     margin: 0 auto;
 }
 
+.card:last-child:hover  img {
+    filter: none;
+}
+
+
 .card:hover img {
     filter: blur(2px);
 }
-
 
 .card .details {
     width: 340px;
@@ -102,10 +109,52 @@
     display: inherit;
 }
 
+.card .dropzone {
+    position: relative;
+    margin: 0 auto;
+    width: 340px;
+    height: 340px;
+    background-color: #fafafa;
+    border: 2px dashed #eeeeee;
+    border-radius: 2px;
+}
+
+.card .dropzone input {
+    display: none;
+}
+
+.card .dropzone input {
+    display: none;
+}
+
+.card .dropzone.dz-started .dropzone-msg {
+    display: none;
+}
+
+.card .dropzone.dz-started .dz-preview div:nth-child(n + 2) {
+    display: none;
+}
+
+.card .dz-remove {
+    text-decoration: none;
+    color: #000;
+    font-size: 10px;
+    cursor: pointer;
+}
+
+.card .dropzone-msg {
+    position: absolute;
+    color: #bdbdbd;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    text-align: center;
+}
+
 .card .fields {
     display: table;
     width: 250px;
-    margin: 0 auto;
+    margin: 20px auto 16px auto;
 }
 
 .card .fields input {
@@ -129,5 +178,9 @@
     margin-left: 5px;
     margin-right: 5px;
     width: 112px;
+}
+
+.card .action-container {
+    padding-bottom: 20px;
 }
 

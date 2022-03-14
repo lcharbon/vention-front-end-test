@@ -1,5 +1,5 @@
 <div class="card" id="<%= dom_id product %>">
-  <%= image_tag(product.featured_photo)%>
+  <%= image_tag(product.feature_image)%>
   <div class="details">
     <p class="name"> <%= product.name %> </p>
     <p class="price"> <%= number_to_currency product.price.to_f/100 %> </p>
