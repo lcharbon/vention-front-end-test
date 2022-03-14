@@ -42,7 +42,15 @@ class ProductsController < ApplicationController
           ]
         end
       else
-        format.html { render :index, status: :unprocessable_entity }
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.replace(
+            "new-product",
+            partial: "products/form",
+            locals: { 
+              product: @product ,
+            }
+          )
+        end
       end
     end
   end

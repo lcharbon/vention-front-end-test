@@ -1,6 +1,7 @@
 class Product < ApplicationRecord
     validates :name, presence: true
     validates :price, presence: true
+    validates :feature_image, presence: true
     validates :rating, :inclusion => 1..5
     
 
