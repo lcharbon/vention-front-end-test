@@ -75,5 +75,7 @@ resets the card back to its original state.
 	In the command prompt execute:
 	`postgres -D "C:\Program Files\PostgreSQL\9.6\data" start`
 3) Install gems by running `bundle install`.
-4) Run `rails s` to start Rails server.
-5) In a web browser navigate to `http://localhost:3000/`.
+4) Create database by running: `rails db:create`.
+5) Create database schema by running: `rails db:migrate`.
+6) Run `rails s` to start Rails server.
+7) In a web browser navigate to `http://localhost:3000/`.
