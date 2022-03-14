@@ -74,3 +74,4 @@ resets the card back to its original state.
 	`postgres -D "C:\Program Files\PostgreSQL\9.6\data" start`
 3) Install gems by running `bundle install`.
 4) Run `rails s` to start Rails server.
+5) In a web browser navigate to `http://localhost:3000/`.
