@@ -24,7 +24,7 @@ class ProductsController < ApplicationController
       if @product.save
         format.turbo_stream do 
           render turbo_stream: [
-            turbo_stream.update(
+            turbo_stream.replace(
               "new-product",
               partial: "products/form",
               locals: { 
@@ -103,6 +103,7 @@ class ProductsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def product_params
-      params.require(:product).permit(:name, :price, :rating, :feature_image)
+      params["product"]["price"] = (params["product"]["price"].to_f * 100).round.to_s
+      params.require(:product).permit(:name, :rating, :price, :feature_image)
     end
 end

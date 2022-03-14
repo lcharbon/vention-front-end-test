@@ -53,6 +53,9 @@ resets the card back to its original state.
 ## Things to Improve
 - Review routes for add to cart.
 - Add CSS transitions to cart status badge.
+- Improve data validation and sanitization.
+- Refactor drag and drop controls.
+- Add image processing to give image correct aspect ratio.
 
 ## Instructions
 1) Install PostgreSQL 14.

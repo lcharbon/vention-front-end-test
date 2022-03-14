@@ -18,9 +18,8 @@
       </div>
     </div>
     <div class="fields">
-        <%= form.hidden_field :featured_photo, value: "/assets/blue-flower" %>    
         <%= form.text_field :name, placeholder: "Name"%>
-        <%= form.number_field :price, placeholder: "Price", min: 0 %>
+        <%= form.number_field :price, placeholder: "Price", min: 0, step: "any" %>
         <%= form.number_field :rating, placeholder: "Rating", min: 1, max: 5 %>
     </div>
 
