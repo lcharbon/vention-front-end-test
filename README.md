@@ -46,6 +46,8 @@ resets the card back to its original state.
 
   
 ## Notable Features
+- Used newest Rails (7.0.2.2).
+- Reactive front end using Hotwire/Turbo Streams.
 - Near to the pixel reproduction of provided design.
 - Cart persisted with cookies.
 - Products resources routes limited to create and index.
