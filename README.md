@@ -60,6 +60,7 @@ resets the card back to its original state.
 ## Instructions
 1) Install PostgreSQL 14.
 2) Start PostgreSQL: 
+
 	**macOS**
 	In the terminal execute:
 	`postgres -D /path/to/postgres start`
