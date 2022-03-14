@@ -71,3 +71,5 @@ resets the card back to its original state.
 	**Windows**
 	In the command prompt execute:
 	`postgres -D "C:\Program Files\PostgreSQL\9.6\data" start`
+3) Instll gems by running `bundle install`.
+4) Run `rails s` to start Rails server.
