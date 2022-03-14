@@ -16,4 +16,12 @@
 
 body {
     font-family: Avenir;
+    text-align: center;
+    padding: 30px;
+}
+
+#products {
+    display: inline-block;
+    max-width: 1202px;
+    font-size: 0;
 }
